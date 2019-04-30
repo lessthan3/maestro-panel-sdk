@@ -1,6 +1,5 @@
 import events from 'events';
 import uuidv4 from 'uuid/v4';
-import { VERSION } from './config'
 import IEvent from './IEvent';
 import IMessage from './IMessage';
 import IStyle from './IStyle';
@@ -12,13 +11,10 @@ class MaestroPanelSDK extends EventEmitter {
 
   private readonly type: string;
 
-  private readonly version: string;
-
   public constructor() {
     super();
     this.instanceId = uuidv4();
     this.type = 'panel-sdk';
-    this.version = VERSION;
   }
 
   /**
@@ -76,9 +72,9 @@ class MaestroPanelSDK extends EventEmitter {
     }
 
     const {
-      name, instanceId, payload, version,
+      name, instanceId, payload,
     } = message;
-    if (instanceId !== this.instanceId || version !== this.version) {
+    if (instanceId !== this.instanceId) {
       return;
     }
     this.emit(name, payload);
@@ -96,7 +92,6 @@ class MaestroPanelSDK extends EventEmitter {
       name,
       payload,
       type: this.type,
-      version: this.version,
     };
 
     // TODO: don't use *

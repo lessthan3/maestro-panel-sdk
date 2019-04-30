@@ -4,5 +4,4 @@ export default interface IMessage {
   instanceId: string;
   payload: Record<string, any> | null;
   type: string;
-  version: string;
 }
