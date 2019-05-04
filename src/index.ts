@@ -10,17 +10,20 @@ class MaestroPanelSDK extends EventEmitter {
 
   private readonly type: string;
 
+  private readonly onMessageBound: EventListenerOrEventListenerObject;
+
   public constructor() {
     super();
     this.instanceId = uuidv4();
     this.type = 'panel-sdk';
+    this.onMessageBound = this.onMessage.bind(this);
   }
 
   /**
    * @desc Starts messaging.
    */
   public init(): void {
-    window.addEventListener('message', this.onMessage, false);
+    window.addEventListener('message', this.onMessageBound, false);
     // send a register message to parent
     this.postMessage('register', null);
   }
@@ -38,7 +41,7 @@ class MaestroPanelSDK extends EventEmitter {
   public destroy(): void {
     this.removeAllListeners();
     this.postMessage('destroy', null);
-    window.removeEventListener('message', this.onMessage, false);
+    window.removeEventListener('message', this.onMessageBound, false);
   }
 
   /**

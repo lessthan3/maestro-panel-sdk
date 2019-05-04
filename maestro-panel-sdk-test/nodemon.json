@@ -1,0 +1,7 @@
+{
+  "watch": [
+    "src"
+  ],
+  "exec": "react-scripts start",
+  "ext": "jx,jsx"
+}
