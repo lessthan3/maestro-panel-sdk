@@ -1,4 +1,4 @@
 .idea
 node_modules
 sample/node_modules
-
+coverage

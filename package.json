@@ -26,6 +26,7 @@
     "lint": "eslint . --ext ts --quiet",
     "postinstall": "tsc",
     "test": "jest",
+    "test:coverage": "jest --coverage",
     "test:watch": "jest --watch",
     "watch": "tsc --watch"
   },

@@ -42,6 +42,24 @@ describe('MaestroPanelSDK', (): void => {
   });
 });
 
+describe('destroy()', (): void => {
+  beforeEach(() => {
+    panel.removeAllListeners = jest.fn();
+    panel.postMessage = jest.fn();
+    window.removeEventListener = jest.fn();
+    panel.destroy();
+  });
+  test('panel.removeAllListeners() called', (): void => {
+    expect(panel.removeAllListeners).toHaveBeenCalled();
+  });
+  test('panel.postMessage() called', (): void => {
+    expect(panel.postMessage).toHaveBeenCalled();
+  });
+  test('panel.removeEventListener() called', (): void => {
+    expect(window.removeEventListener).toHaveBeenCalled();
+  });
+});
+
 describe('event handling', (): void => {
   test('can subscribe to events', (): void => {
     const payload = {
