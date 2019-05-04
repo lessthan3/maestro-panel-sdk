@@ -33,5 +33,9 @@ Name | Params | Description | Payload | Async
 --- | --- | --- | --- | ---
 init | | registers the iframe with the parent and inits listener | | false 
 destroy | | destroys listeners and informs parent this iframe is destroyed | | false 
-getStyle | | returns a style object of the parent site | style object | true
+render | | informs the parent the panel should be rendered | | false
+
+### Events
+Name | Description
+style | fired when the parent's style changes | Payload matches IStyle.ts 
 
