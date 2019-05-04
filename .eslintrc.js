@@ -1,5 +1,18 @@
 
 module.exports = {
+  overrides: [{
+    env: {
+      jest: true
+    },
+    files: [
+      '**/*.test.ts'
+    ],
+    settings: {
+      'import/core-modules': [
+        'jest',
+      ],
+    },
+  }],
   env: {
     "browser": true,
     "node": true,
@@ -46,6 +59,7 @@ module.exports = {
       but this isn't a concern when running JavaScript in Node instead of a browser.
     */
     'no-restricted-syntax': 'off',
+    'no-undef': 'off',
     /*
       We use Mongo.
     */
@@ -53,7 +67,8 @@ module.exports = {
     /*
       ESLint Semi
      */
-    "semi": "off",
+    // TODO: add the following when the ts rule is added to the parser
+    // "semi": "off",
     // "@typescript-eslint/semi": ["error"],
     'sort-keys': 'error',
     "@typescript-eslint/interface-name-prefix": ["error", "always"],

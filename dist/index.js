@@ -30,17 +30,6 @@ class MaestroPanelSDK extends EventEmitter {
         window.removeEventListener('message', this.onMessage, false);
     }
     /**
-     * @desc Get site style
-     */
-    async getStyle() {
-        return new Promise((resolve) => {
-            this.once('receive-style', (payload) => {
-                resolve(payload);
-            });
-            this.postMessage('request-style', null);
-        });
-    }
-    /**
      * @private
      * @param {IEvent} event
      * @desc message parser

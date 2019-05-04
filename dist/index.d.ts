@@ -1,6 +1,5 @@
 /// <reference types="node" />
 import events from 'events';
-import IStyle from './IStyle';
 export declare const EventEmitter: typeof events.EventEmitter;
 declare class MaestroPanelSDK extends EventEmitter {
     private readonly instanceId;
@@ -18,10 +17,6 @@ declare class MaestroPanelSDK extends EventEmitter {
      * @desc Stops all messages.
      */
     destroy(): void;
-    /**
-     * @desc Get site style
-     */
-    getStyle(): Promise<IStyle>;
     /**
      * @private
      * @param {IEvent} event

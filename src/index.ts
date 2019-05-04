@@ -2,7 +2,6 @@ import events from 'events';
 import uuidv4 from 'uuid/v4';
 import IEvent from './IEvent';
 import IMessage from './IMessage';
-import IStyle from './IStyle';
 
 export const { EventEmitter } = events;
 
@@ -23,14 +22,14 @@ class MaestroPanelSDK extends EventEmitter {
   public init(): void {
     window.addEventListener('message', this.onMessage, false);
     // send a register message to parent
-    this.postMessage('request-register', null);
+    this.postMessage('register', null);
   }
 
   /**
    * @desc Fire when you want the panel to render in the parent.
    */
   public render(): void {
-    this.postMessage('request-render', null);
+    this.postMessage('render', null);
   }
 
   /**
@@ -38,20 +37,8 @@ class MaestroPanelSDK extends EventEmitter {
    */
   public destroy(): void {
     this.removeAllListeners();
-    this.postMessage('destroy', null)
+    this.postMessage('destroy', null);
     window.removeEventListener('message', this.onMessage, false);
-  }
-
-  /**
-   * @desc Get site style
-   */
-  public async getStyle(): Promise<IStyle> {
-    return new Promise((resolve): void => {
-      this.once('receive-style', (payload: IStyle): void => {
-        resolve(payload);
-      })
-      this.postMessage('request-style', null);
-    })
   }
 
   /**

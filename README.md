@@ -12,15 +12,13 @@ const run = async () => {
 }
 
 // get style from parent
-panel.getStyle().then((style) => {
+panel.on('style', (style) => {
   // do stuff
-})
+  
+});
 
-// parent is ready to render page
-panel.on('parent-ready', () => {
-  // do stuff, then tell parent to render
-  panel.render();
-})
+// tell parent to render panel
+panel.render();
 
 // initialize the sdk
 panel.init();

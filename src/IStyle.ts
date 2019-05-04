@@ -1,4 +1,4 @@
-export default interface IStyle {
+interface IStyle {
   activeColor: string | null;
   background: string | null;
   backgroundColor: string | null;
@@ -15,3 +15,5 @@ export default interface IStyle {
   titleFont: string | null;
   titleTextColor: string | null;
 }
+
+export default IStyle;
